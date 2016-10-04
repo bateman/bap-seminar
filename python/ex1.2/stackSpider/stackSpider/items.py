@@ -9,6 +9,7 @@ import scrapy
 
 
 class StackQuestion(scrapy.Item):
+    type = scrapy.Field()
     id = scrapy.Field()
     title = scrapy.Field()
     author = scrapy.Field()
@@ -16,3 +17,11 @@ class StackQuestion(scrapy.Item):
     body = scrapy.Field()
     answers = scrapy.Field()
 
+
+class StackAnswer(scrapy.Item):
+    type = scrapy.Field()
+    id = scrapy.Field()
+    qid = scrapy.Field()
+    author = scrapy.Field()
+    date = scrapy.Field()
+    body = scrapy.Field()

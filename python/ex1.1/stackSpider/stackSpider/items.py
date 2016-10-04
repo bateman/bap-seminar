@@ -15,4 +15,3 @@ class StackQuestion(scrapy.Item):
     date = scrapy.Field()
     body = scrapy.Field()
     answers = scrapy.Field()
-

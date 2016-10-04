@@ -3,18 +3,16 @@
 # Define here the code for scraping content
 
 from scrapy import Spider
-from stackSpider.items import StackQuestionItem, StackAnswerItem
+from stackSpider.items import StackQuestion
 
 
 class StackOverflowSpider(Spider):
-    name = "article"
+    name = "stack"
     allowed_domains = ['']
     start_urls = ['']
 
     def parse(self, response):
-        question = StackQuestionItem()
+        question = StackQuestion()
         # ...
-        yield question
-        answer = StackAnswerItem()
-        #...
-        yield answer
+        return question
+
