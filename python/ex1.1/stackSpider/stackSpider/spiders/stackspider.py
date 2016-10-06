@@ -22,10 +22,8 @@ class StackOverflowSpider(Spider):
             question['id'] = response.url
 
         question['title'] = response.xpath("//h1/a[@class='question-hyperlink']/text()").extract()[0]
-        question['author'] = \
-            response.xpath("//td[@class='post-signature owner']/div/div[@class='user-details']/a/text()").extract()[0]
-        question['date'] = \
-            response.xpath("//td[@class='post-signature owner']//span[@class='relativetime']/@title").extract()[0]
+        question['author'] = response.xpath("//td/div/div[@class='user-details']/a/text()").extract()[0]
+        question['date'] = response.xpath("//td//span[@class='relativetime']/@title").extract()[0]
         question['body'] = response.xpath("//div[@class='post-text']").extract()[0]
         question['answers'] = response.xpath("//span[@itemprop='answerCount']/text()").extract()[0]
 
