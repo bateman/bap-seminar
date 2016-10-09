@@ -1,8 +1,10 @@
 library(caret)
-library(C50) # decision trees classifier
+library(Boruta)  # feature selection
+library(randomForest) # Random Forest classifier
 
 data(PimaIndiansDiabetes)
 allData <- PimaIndiansDiabetes
+
 
 # diabetes is the binary outcome that we want to predict
 # the remaining 8 are the predictors
@@ -30,28 +32,39 @@ stdTrainingSet <- predict(preprocessParams, trainingSet)
 summary(trainingSet)
 summary(stdTrainingSet)
 
+# feature selection
+boruta.train <- Boruta(diabetes~., data=stdTrainingSet)
+print(boruta.train)
+par(mar=c(5,2,0,1) +2)  # extra bottom margin
+plot(boruta.train, xlab = "", las=2)
+predictors <- getSelectedAttributes(boruta.train)
+
+# remove unimportant attributes
+stdTrainingSet <- stdTrainingSet[, c(predictors, "diabetes")]
+testSet <- testSet[, c(predictors, "diabetes")]
+
 ##### data split
-# train a naive bayes model
-modelDS <- C5.0(diabetes~., data=stdTrainingSet)
+# train a RF  model
+modelDS <- randomForest(diabetes~., data=stdTrainingSet)
 # make predictions
 predictions <- predict(modelDS, testSet[, predictors])
 # summarize results
-confusionMatrix(predictions, testSet[, "diabetes"], positive = "pos")  # same as stdTrainingSet$diabetes
+confusionMatrix(predictions, testSet[, "diabetes"], positive = "pos")  
 
 #### boostrap
 # define training control with N iterations
 train_control_boot <- trainControl(method="boot", number=5)
 # train the model
-modelBoot <- train(diabetes~., data=stdTrainingSet, trControl=train_control_boot, method="C5.0")
+modelBoot <- train(diabetes~., data=stdTrainingSet, trControl=train_control_boot, method="rf")
 # make predictions
 predictions <- predict(modelBoot, testSet[, predictors])
 # summarize results
-confusionMatrix(predictions, testSet[, "diabetes"], positive = "pos")  # same as stdTrainingSet$diabetes
+confusionMatrix(predictions, testSet[, "diabetes"], positive = "pos")
 
 ### k-fold
 train_control_cv <- trainControl(method="cv", number=10)
 # train the model
-modelCV <- train(diabetes~., data=stdTrainingSet, trControl=train_control_cv, method="C5.0")
+modelCV <- train(diabetes~., data=stdTrainingSet, trControl=train_control_cv, method="rf")
 # make predictions
 predictions <- predict(modelCV, testSet[, predictors])
 # summarize results
@@ -60,9 +73,17 @@ confusionMatrix(predictions, testSet[, "diabetes"], positive = "pos")
 ### repeated k-fold
 train_control_rcv <- trainControl(method="repeatedcv", number=10, repeats = 5)
 # train the model
-modelRCV <- train(diabetes~., data=stdTrainingSet, trControl=train_control_rcv, method="C5.0")
+modelRCV <- train(diabetes~., data=stdTrainingSet, trControl=train_control_rcv, method="rf")
 # make predictions
 predictions <- predict(modelRCV, testSet[, predictors])
 # summarize results
-confusionMatrix(predictions, testSet[, "diabetes"], positive = "pos")  
+confusionMatrix(predictions, testSet[, "diabetes"], positive = "pos")
 
+### LOOCV
+train_control_loo <- trainControl(method="LOOCV")
+# train the model
+modelLOO <- train(diabetes~., data=stdTrainingSet, trControl=train_control_loo, method="rf")
+# make predictions
+predictions <- predict(modelLOO, testSet[, predictors])
+# summarize results
+confusionMatrix(predictions, testSet[, "diabetes"], positive = "pos")
