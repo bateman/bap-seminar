@@ -13,6 +13,11 @@ if(.Platform$OS.type == "unix") {
   }
 }
 
+# diabetes dataset
+if(!require("mlbench", quietly = TRUE)){
+  install.packages(c("mlbench"), repos = "http://cran.mirror.garr.it/mirrors/CRAN/")
+}
+
 # Scott-Knott clustering test
 if(!require("ScottKnott", quietly = TRUE)){
   install.packages("ScottKnott", dependencies = c("Imports", "Depends"), repos = "http://cran.mirror.garr.it/mirrors/CRAN/")
