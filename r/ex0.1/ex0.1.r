@@ -1,6 +1,6 @@
 library(caret)
 library(C50) # decision trees classifier
-
+library(mlbench) # for diabetes database
 data(PimaIndiansDiabetes)
 allData <- PimaIndiansDiabetes
 
