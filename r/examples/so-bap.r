@@ -59,8 +59,8 @@ roc.result <- roc(response = testing$solution,
                   predictor = probs$True,
                   levels = c("True", "False"))
 roc.result$auc
-plot(roc.result, print.auc=TRUE,
-     main="ROC plot", legacy.axes = TRUE, xlab="FPR", ylab="TPR", col=rainbow(1))
+plot(roc.result, print.auc=TRUE, 
+     main="ROC plot", legacy.axes = TRUE, xlab="FPR", ylab="TPR", col="red")
 # smooth
-plot(smooth(roc.result), print.auc=TRUE,
-     main="ROC plot", legacy.axes = TRUE, xlab="FPR", ylab="TPR", col=rainbow(1))
+plot(smooth(roc.result), add=TRUE,
+     main="ROC plot", legacy.axes = TRUE, xlab="FPR", ylab="TPR", col="blue")
