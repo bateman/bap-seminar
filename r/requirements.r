@@ -33,9 +33,19 @@ if(!require("Boruta", quietly = TRUE)){
   install.packages(c("Boruta"), repos = "http://cran.mirror.garr.it/mirrors/CRAN/")
 }
 
+# pROC package for AUC and ROC plot
+if(!require("pROC", quietly = TRUE)){
+  install.packages(c("pROC"), repos = "http://cran.mirror.garr.it/mirrors/CRAN/")
+}
+
 # Naive Bayes
 if(!require("klaR", quietly = TRUE)){
   install.packages(c("klaR"), repos = "http://cran.mirror.garr.it/mirrors/CRAN/")
+}
+
+# SVM
+if(!require("kerlab", quietly = TRUE)){
+  install.packages(c("kernlab"), repos = "http://cran.mirror.garr.it/mirrors/CRAN/")
 }
 
 if(!require("e1071", quietly = TRUE)){
