@@ -43,8 +43,13 @@ if(!require("klaR", quietly = TRUE)){
   install.packages(c("klaR"), repos = "http://cran.mirror.garr.it/mirrors/CRAN/")
 }
 
+# GBM
+if(!require("gbm", quietly = TRUE)){
+  install.packages(c("gbm"), repos = "http://cran.mirror.garr.it/mirrors/CRAN/")
+}
+
 # SVM
-if(!require("kerlab", quietly = TRUE)){
+if(!require("kernlab", quietly = TRUE)){
   install.packages(c("kernlab"), repos = "http://cran.mirror.garr.it/mirrors/CRAN/")
 }
 
