@@ -30,7 +30,7 @@ $ R --version
 R version 3.3.1 (2016-06-21) [...]
 ```
 
-Now cd to `bap-seminar/r` and run the following following command and wait until all the packages are downloaded and installed. 
+Now cd to `bap-seminar/r` and run the following command and wait until all the packages are downloaded and installed. 
 ```
 $ Rscript requirements.r
 ```
