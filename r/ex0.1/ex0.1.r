@@ -44,25 +44,25 @@ train_control_boot <- trainControl(method="boot", number=5)
 # train the model
 modelBoot <- train(diabetes~., data=stdTrainingSet, trControl=train_control_boot, method="C5.0")
 # make predictions
-predictions <- predict(modelBoot, testSet[, predictors])
+predictionsBoot <- predict(modelBoot, testSet[, predictors])
 # summarize results
-confusionMatrix(predictions, testSet[, "diabetes"], positive = "pos")  # same as stdTrainingSet$diabetes
+confusionMatrix(predictionsBoot, testSet[, "diabetes"], positive = "pos")  # same as stdTrainingSet$diabetes
 
 ### k-fold
 train_control_cv <- trainControl(method="cv", number=10)
 # train the model
 modelCV <- train(diabetes~., data=stdTrainingSet, trControl=train_control_cv, method="C5.0")
 # make predictions
-predictions <- predict(modelCV, testSet[, predictors])
+predictionsCV <- predict(modelCV, testSet[, predictors])
 # summarize results
-confusionMatrix(predictions, testSet[, "diabetes"], positive = "pos")
+confusionMatrix(predictionsCV, testSet[, "diabetes"], positive = "pos")
 
 ### repeated k-fold
 train_control_rcv <- trainControl(method="repeatedcv", number=10, repeats = 5)
 # train the model
 modelRCV <- train(diabetes~., data=stdTrainingSet, trControl=train_control_rcv, method="C5.0")
 # make predictions
-predictions <- predict(modelRCV, testSet[, predictors])
+predictionsRCV <- predict(modelRCV, testSet[, predictors])
 # summarize results
-confusionMatrix(predictions, testSet[, "diabetes"], positive = "pos")  
+confusionMatrix(predictionsRCV, testSet[, "diabetes"], positive = "pos")  
 
