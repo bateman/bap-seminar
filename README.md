@@ -1,5 +1,11 @@
 # bap-seminar
-Material for the Best-Answer Prediction seminar
+Material for the Best-Answer Prediction seminar.
+
+To start with the setup, open the terminal and cd to a folder of choice; then, clone the current project:
+```
+$ git clone https://github.com/bateman/bap-seminar.git
+$ cd bap-seminar
+```
 
 ## Part 1 - Build a dataset using web scraping
 To configure the system for Part 1, make sure to have Python 2.7 installed first. To check the default version of Python, open the terminal and run:
