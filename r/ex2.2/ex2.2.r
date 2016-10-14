@@ -7,7 +7,7 @@ if(!dir.exists(output_dir))
   dir.create(output_dir, showWarnings = FALSE, recursive = TRUE, mode = "0777")
 
 # read dfm
-csv_file <- "../input/so-500.csv"
+csv_file <- "../input/so-1k.csv"
 SO <- read.csv(csv_file, header = TRUE, sep=",")
 
 outcome <- "solution"
