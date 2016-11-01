@@ -19,7 +19,7 @@ class StackOverflowSpider(Spider):
         if id:
             question['id'] = id.group(1)
         else:
-            question['id'] = response.url
+            question['id'] = 're error'
 
         question['title'] = response.xpath("//h1/a[@class='question-hyperlink']/text()").extract()[0]
         question['author'] = response.xpath("//td/div/div[@class='user-details']/a/text()").extract()[0]
