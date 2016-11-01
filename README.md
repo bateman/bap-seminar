@@ -26,7 +26,7 @@ Further info on `virtualenv` can be found [here](http://docs.python-guide.org/en
 
 Now that that a `virtualenv` is active, run the following command and wait until all the packages are downloaded and installed. All the changes won't affect the system, but will stay sandboxed within the active `virtualenv`.
 ```
-$ pip install -r requirements.txt
+$ pip install -r requirements_py2.txt
 ```
 
 ## Part 2 - Run a classification study with R
