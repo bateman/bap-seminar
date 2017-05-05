@@ -21,7 +21,6 @@ fitControl <- trainControl(## 10-fold CV
 
 set.seed(825)
 xxxMethod1XxxxTuned <- train(Class ~ ., data = training, 
-                  # gradient boosting machine (ensemble tree learner)
                   method = "xxxMethod1Xxxx",
                   trControl = fitControl,
                   preProcess = c("center", "scale"),
@@ -32,7 +31,6 @@ xxxMethod1XxxxTuned <- train(Class ~ ., data = training,
 xxxMethod1XxxxTuned
 
 xxxMethod2XxxxTuned <- train(Class ~ ., data = training, 
-                             # gradient boosting machine (ensemble tree learner)
                              method = "xxxMethod2Xxxx",
                              trControl = fitControl,
                              preProcess = c("center", "scale"),
@@ -43,7 +41,6 @@ xxxMethod2XxxxTuned <- train(Class ~ ., data = training,
 xxxMethod2xxxTuned
 
 xxxMethod3XxxxTuned <- train(Class ~ ., data = training, 
-                             # gradient boosting machine (ensemble tree learner)
                              method = "xxxMethod13xxx",
                              trControl = fitControl,
                              preProcess = c("center", "scale"),
